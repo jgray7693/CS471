@@ -14,6 +14,12 @@ def g(x):
 
 # Hill Climb algorithm using a bounded domain and a predetermined step-size
 def hill_climb(func, domain, step, x0):
+    '''
+    func: function to be evaluated
+    domain: list of two integers representing the inclusive domain of available inputs
+    step: step size for available inputs
+    x0: starting point for the hill climb algorithm
+    '''
     # Set current to the starting x-value (x0) and determine the function value at x0
     current = x0
     peak = func(current)
@@ -34,6 +40,12 @@ def hill_climb(func, domain, step, x0):
 
 # Random restart hill climb algorithm that calls hill climb algorithm at randomly determined intervals to find the absolute maximum of a function in a bounded domain
 def random_restart_hill_climb(func, domain, step, num_restarts):
+    '''
+    func: function to be evaluated
+    domain: list of two integers representing the inclusive domain of available inputs
+    step: step size for available inputs
+    num_restarts: number of random restarts to perform
+    '''
     # Set x_max to the lowest value in the bounded domain, and y_max to the function value at x
     x_max = min(domain)
     y_max = (func(x_max))
