@@ -1,4 +1,3 @@
-import math
 import random
 
 # f(x) used for test cases 1a and 1b
@@ -67,10 +66,10 @@ def random_restart_hill_climb(func, domain, step, num_restarts):
 ####################################################################################################################
 x_domain = [-5, 5]                                          # inclusive domain of available inputs
 step_size = 0.5                                             # step size for available inputs
-start = random.randrange(min(x_domain), max(x_domain), 1)    # random starting-point
+start = random.randrange(min(x_domain), max(x_domain), 1)   # random starting-point
 x, y = hill_climb(f, x_domain, step_size, start)
 print('Test case 1a: f(x) = 2 - x^2')
-print(f'Step-size: {step_size}, Max: {y}, x: {x}\n')
+print(f'Step-size: {step_size}\tx: {round(x,3)}\tMax: {round(y,3)}\n')
 
 # Test Case 1b
 ####################################################################################################################
@@ -79,12 +78,30 @@ step_size = 0.01                                            # step size for avai
 start = random.randrange(min(x_domain), max(x_domain), 1)   # random starting-point
 x, y = hill_climb(f, x_domain, step_size, start)
 print('Test case 1b: f(x) = 2 - x^2')
-print(f'Step-size: {step_size}, Max: {y}, x: {x}\n')
+print(f'Step-size: {step_size}\tx: {round(x,3)}\tMax: {round(y,3)}\n')
 
-# Test Case 2
+# Test Case 2a
 ####################################################################################################################
 x_domain = [0, 10]                                          # inclusive domain of available inputs
 step_size = 0.5                                             # step size for available inputs
 x, y = random_restart_hill_climb(g, x_domain, step_size, 20)
-print('Test case 2: g(x) = 0.0051x^5 - 0.1367x^4 + 1.24x^3 - 4.456x^2 + 5.66x - 0.287')
-print(f'Step-size: {step_size}, Max: {y}, x: {x}')
+print('Test case 2a: g(x) = 0.0051x^5 - 0.1367x^4 + 1.24x^3 - 4.456x^2 + 5.66x - 0.287')
+print(f'Step-size: {step_size}\tx: {round(x,3)}\tMax: {round(y,3)}\n')
+
+# Test Case 2b
+####################################################################################################################
+x_domain = [0, 10]                                          # inclusive domain of available inputs
+step_size = 0.5                                             # step size for available inputs
+x = []                                                      # list to store x-values for random starting points
+y = []                                                      # list to store y-values for random starting points
+start = []                                                  # list to store random starting points
+for i in range (0, 5):
+    start_temp = random.randrange(min(x_domain), max(x_domain), 1)   # random starting-point
+    x_temp, y_temp = hill_climb(g, x_domain, step_size, start_temp)
+    start.append(start_temp)
+    x.append(x_temp)
+    y.append(y_temp)
+print('Test case 2b: g(x) = 0.0051x^5 - 0.1367x^4 + 1.24x^3 - 4.456x^2 + 5.66x - 0.287')
+# print start, y, x values for each random starting point
+for i in range(0,5):
+    print(f'Start: {round(start[i], 3)}\tx: {round(x[i], 3)}\tMax: {round(y[i], 3)}')
