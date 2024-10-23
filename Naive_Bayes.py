@@ -30,7 +30,8 @@ def build_naive_bayes_model(reader):
                     ham_dict[word] += 1
                 else:
                     ham_dict[word] = 1
-                    unique_words += 1
+                    if word not in spam_dict:
+                        unique_words += 1
         # If the message is a spam message, increment spam_dict count  
         elif row[0] == 'spam':
             spam_dict['count'] += 1
@@ -41,8 +42,9 @@ def build_naive_bayes_model(reader):
                 if word in spam_dict:
                     spam_dict[word] += 1
                 else:
-                    unique_words += 1
                     spam_dict[word] = 1
+                    if word not in ham_dict:
+                        unique_words += 1
         counter += 1
         if counter == 20:
             break
@@ -86,7 +88,6 @@ def test_naive_bayes_model(reader, ham_dict, spam_dict):
         prediction = 'ham' if ham_probability > spam_probability else 'spam'
         # Add the results of each individual test to test_results
         test_results.append((actual_class, sentence, ham_probability, spam_probability, prediction, actual_class == prediction))
-    
     return test_results
 
 def compute_prior_probability(ham_dict, spam_dict):
@@ -119,7 +120,7 @@ def compute_conditional_probability(word, ham_dict, spam_dict):
         spam_numerator = spam_dict[word] + 1
     else:
         spam_numerator = 1
-    
+        
     cond_prob_ham = ham_numerator / ham_dict['total_words']
     cond_prob_spam = spam_numerator / spam_dict['total_words']
 
