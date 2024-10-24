@@ -11,3 +11,7 @@ Write a hill climb and a random restart hill climbing algorithm. Using these alg
 # Assignment 3 - Naive Bayes  
 ## Naive Bayes text classification algorithm  
 Develop a model using Naive Bayes algorithm for text classification to detect and classify messages as spam or ham.  
+
+# Assignment 4 - Decision Tree  
+## Implement a decision tree using Scikit-learn  
+Download the iris dataset and use it to build a classification decision tree. Additionally, tune two hyperparameters by using validation testing.  
