@@ -71,10 +71,10 @@ plt.grid(True)
 plt.show()
 
 from sklearn.metrics import classification_report
-# Fit a tuned Decision tree using optimal hyperparameters with the entire training data, and test it on the unseen testing data
+# Fit a tuned Decision Tree using optimal hyperparameters with the entire training data, and test it on the unseen testing data
 clf = tree.DecisionTreeClassifier(max_depth=optimal_depth, min_samples_split=optimal_split)
 clf = clf.fit(X_train, y_train)
-
+# Predict the testing data using the tuned Decision Tree and print the classification report
 print('Iris classification using the tuned sklearn Decision Tree:\n')
 final_prediction = clf.predict(X_test)
 print(classification_report(y_test, final_prediction, target_names=iris_data.target_names))
