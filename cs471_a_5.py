@@ -123,7 +123,7 @@ print(X_test.shape)
 
 from sklearn.svm import SVC
 from sklearn.metrics import classification_report
-from sklearn.model_selection import train_test_split, GridSearchCV
+from sklearn.model_selection import GridSearchCV
 
 # Define the parameter grid for C and gamma for hyperparameter tuning
 param_grid = {
